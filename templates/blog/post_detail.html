@@ -14,4 +14,24 @@
     <a class="btn" href="{% url 'blog:post-update' post.pk %}">Editar</a>
     <a class="btn danger" href="{% url 'blog:post-delete' post.pk %}">Remover</a>
   </div>
+
+  <section id="comentarios">
+    <h2>Comentários ({{ comments|length }})</h2>
+    {% if comments %}
+      <ul class="comments">
+        {% for comment in comments %}
+          <li>
+            <p class="meta"><span class="who">{{ comment.author.username }}</span>
+              · {{ comment.posted_at|date:"d/m/Y, H:i" }}</p>
+            <p>{{ comment.text|linebreaksbr }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="card">Ninguém comentou ainda. Seja o primeiro!</p>
+    {% endif %}
+    <div class="actions">
+      <a class="btn primary" href="{% url 'blog:comment-create' post.pk %}">Comentar</a>
+    </div>
+  </section>
 {% endblock %}

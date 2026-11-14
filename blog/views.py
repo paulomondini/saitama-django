@@ -1,14 +1,15 @@
-# Versão C: views com as classes genéricas do Django
-# (ListView, DetailView, CreateView, UpdateView e DeleteView).
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import (
     CreateView, DeleteView, DetailView, ListView, UpdateView,
 )
 
-from .forms import PostForm
-from .models import Post
+from .forms import CommentForm, PostForm
+from .models import Comment, Post
 
+
+# ---------- Posts ----------
 
 class PostListView(ListView):
     model = Post
@@ -18,14 +19,19 @@ class PostListView(ListView):
 class PostDetailView(DetailView):
     # DetailView já responde com 404 se o post não existir.
     model = Post
-    # template padrão: blog/post_detail.html; variável: post
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Comentários do post, do mais recente para o mais antigo.
+        context['comments'] = (
+            self.object.comments.select_related('author').order_by('-posted_at')
+        )
+        return context
 
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     form_class = PostForm
-    # template padrão: blog/post_form.html
-    # após salvar, redireciona para post.get_absolute_url()
 
 
 class PostUpdateView(LoginRequiredMixin, UpdateView):
@@ -35,5 +41,32 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
 
 class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
-    # GET mostra blog/post_confirm_delete.html; POST apaga e redireciona.
     success_url = reverse_lazy('blog:post-list')
+
+
+# ---------- Comentários ----------
+
+class CommentCreateView(LoginRequiredMixin, CreateView):
+    """Página para comentar em um post; o autor é o usuário logado."""
+
+    model = Comment
+    form_class = CommentForm
+    template_name = 'blog/comment_form.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        # 404 se o post a ser comentado não existir.
+        self.post_obj = get_object_or_404(Post, pk=kwargs['pk'])
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['post'] = self.post_obj
+        return context
+
+    def form_valid(self, form):
+        form.instance.post = self.post_obj
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return self.post_obj.get_absolute_url() + '#comentarios'
