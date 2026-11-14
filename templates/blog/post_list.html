@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Artigos{% endblock %}
+
+{% block content %}
+  <h1>Artigos e discussões</h1>
+  <p class="meta">Tudo o que os fãs já escreveram sobre heróis, monstros e o mundo de One-Punch Man.</p>
+
+  {% if post_list %}
+    <ul class="topics">
+      {% for post in post_list %}
+        <li>
+          <a class="title" href="{% url 'blog:post-detail' post.pk %}">{{ post.title }}</a>
+          <p class="meta">publicado em {{ post.posted_at|date:"d/m/Y, H:i" }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="card">Nenhum artigo publicado ainda.</p>
+  {% endif %}
+
+  <div class="actions">
+    <a class="btn primary" href="{% url 'blog:post-create' %}">Escrever novo artigo</a>
+  </div>
+{% endblock %}

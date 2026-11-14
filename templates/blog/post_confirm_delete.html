@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Remover artigo{% endblock %}
+
+{% block content %}
+  <h1>Remover artigo</h1>
+  <form class="card" method="post">
+    {% csrf_token %}
+    <p>Tem certeza de que deseja remover <strong>“{{ post.title }}”</strong>? Essa ação não pode ser desfeita.</p>
+    <div class="actions">
+      <button class="btn danger" type="submit">Sim, remover</button>
+      <a class="btn" href="{% url 'blog:post-detail' post.pk %}">Cancelar</a>
+    </div>
+  </form>
+{% endblock %}

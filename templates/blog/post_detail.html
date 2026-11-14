@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+  <p class="meta"><a href="{% url 'blog:post-list' %}">← todos os artigos</a></p>
+  <article class="card article">
+    <h1>{{ post.title }}</h1>
+    <p class="meta">publicado em {{ post.posted_at|date:"d/m/Y, H:i" }}</p>
+    {{ post.content|safe }}
+  </article>
+
+  <div class="actions">
+    <a class="btn" href="{% url 'blog:post-update' post.pk %}">Editar</a>
+    <a class="btn danger" href="{% url 'blog:post-delete' post.pk %}">Remover</a>
+  </div>
+{% endblock %}

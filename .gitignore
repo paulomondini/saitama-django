@@ -1,0 +1,8 @@
+# Banco de dados local (exigência da tarefa)
+db.sqlite3
+# Cache do Python (exigência da tarefa)
+__pycache__/
+*.pyc
+# Ambiente virtual e arquivos gerados
+.venv/
+staticfiles/

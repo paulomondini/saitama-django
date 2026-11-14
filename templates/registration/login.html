@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Entrar{% endblock %}
+
+{% block content %}
+  <h1>Entrar</h1>
+  <p class="meta">As contas de membros são criadas pela administração do fórum.</p>
+  <form class="card stack" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" name="next" value="{{ next }}">
+    <div class="actions">
+      <button class="btn primary" type="submit">Entrar</button>
+    </div>
+  </form>
+{% endblock %}

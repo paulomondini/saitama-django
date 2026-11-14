@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}{% if post %}Editar artigo{% else %}Novo artigo{% endif %}{% endblock %}
+
+{% block content %}
+  <h1>{% if post %}Editar “{{ post.title }}”{% else %}Novo artigo{% endif %}</h1>
+  <p class="meta">O conteúdo aceita HTML (por exemplo &lt;p&gt;, &lt;h2&gt;, &lt;ul&gt;, &lt;img&gt;).</p>
+
+  <form class="card stack" method="post">
+    {% csrf_token %}
+    <div class="field">
+      <label for="id_title">Título</label>
+      <input type="text" id="id_title" name="title" value="{{ post.title }}">
+    </div>
+    <div class="field">
+      <label for="id_content">Conteúdo (HTML)</label>
+      <textarea id="id_content" name="content">{{ post.content }}</textarea>
+    </div>
+    <div class="actions">
+      <button class="btn primary" type="submit">Salvar</button>
+      {% if post %}
+        <a class="btn" href="{% url 'blog:post-detail' post.pk %}">Cancelar</a>
+      {% else %}
+        <a class="btn" href="{% url 'blog:post-list' %}">Cancelar</a>
+      {% endif %}
+    </div>
+  </form>
+{% endblock %}
