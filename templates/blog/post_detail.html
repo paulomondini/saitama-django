@@ -17,10 +17,12 @@
     {{ post.content|safe }}
   </article>
 
-  <div class="actions">
-    <a class="btn" href="{% url 'blog:post-update' post.pk %}">Editar</a>
-    <a class="btn danger" href="{% url 'blog:post-delete' post.pk %}">Remover</a>
-  </div>
+  {% if user.is_staff %}
+    <div class="actions">
+      <a class="btn" href="{% url 'blog:post-update' post.pk %}">Editar</a>
+      <a class="btn danger" href="{% url 'blog:post-delete' post.pk %}">Remover</a>
+    </div>
+  {% endif %}
 
   <section id="comentarios">
     <h2>Comentários ({{ comments|length }})</h2>

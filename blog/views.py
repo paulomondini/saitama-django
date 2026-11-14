@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import (
@@ -35,12 +35,23 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     form_class = PostForm
 
 
-class PostUpdateView(LoginRequiredMixin, UpdateView):
+class StaffRequiredMixin(UserPassesTestMixin):
+    """Só a administração (usuários com acesso ao admin) pode passar.
+
+    Visitante sem login é mandado para a página de login; usuário logado
+    sem permissão recebe erro 403 (acesso negado).
+    """
+
+    def test_func(self):
+        return self.request.user.is_staff
+
+
+class PostUpdateView(StaffRequiredMixin, UpdateView):
     model = Post
     form_class = PostForm
 
 
-class PostDeleteView(LoginRequiredMixin, DeleteView):
+class PostDeleteView(StaffRequiredMixin, DeleteView):
     model = Post
     success_url = reverse_lazy('blog:post-list')
 
