@@ -1,53 +1,39 @@
-# Versão B: views funcionais utilizando um Django form (PostForm),
-# que valida os dados antes de salvar.
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404, redirect, render
+# Versão C: views com as classes genéricas do Django
+# (ListView, DetailView, CreateView, UpdateView e DeleteView).
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
+from django.views.generic import (
+    CreateView, DeleteView, DetailView, ListView, UpdateView,
+)
 
 from .forms import PostForm
 from .models import Post
 
 
-def post_list(request):
-    posts = Post.objects.all()
-    return render(request, 'blog/post_list.html', {'post_list': posts})
+class PostListView(ListView):
+    model = Post
+    # template padrão: blog/post_list.html; variável: post_list
 
 
-def post_detail(request, pk):
-    # get_object_or_404 responde com erro 404 se o post não existir.
-    post = get_object_or_404(Post, pk=pk)
-    return render(request, 'blog/post_detail.html', {'post': post})
+class PostDetailView(DetailView):
+    # DetailView já responde com 404 se o post não existir.
+    model = Post
+    # template padrão: blog/post_detail.html; variável: post
 
 
-@login_required
-def post_create(request):
-    if request.method == 'POST':
-        form = PostForm(request.POST)
-        if form.is_valid():
-            post = form.save()
-            return redirect('blog:post-detail', pk=post.pk)
-    else:
-        form = PostForm()
-    return render(request, 'blog/post_form.html', {'form': form})
+class PostCreateView(LoginRequiredMixin, CreateView):
+    model = Post
+    form_class = PostForm
+    # template padrão: blog/post_form.html
+    # após salvar, redireciona para post.get_absolute_url()
 
 
-@login_required
-def post_update(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    if request.method == 'POST':
-        form = PostForm(request.POST, instance=post)
-        if form.is_valid():
-            form.save()
-            return redirect('blog:post-detail', pk=post.pk)
-    else:
-        form = PostForm(instance=post)
-    return render(request, 'blog/post_form.html', {'form': form, 'post': post})
+class PostUpdateView(LoginRequiredMixin, UpdateView):
+    model = Post
+    form_class = PostForm
 
 
-@login_required
-def post_delete(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    if request.method == 'POST':
-        post.delete()
-        return redirect('blog:post-list')
-    # GET: mostra a página de confirmação antes de apagar.
-    return render(request, 'blog/post_confirm_delete.html', {'post': post})
+class PostDeleteView(LoginRequiredMixin, DeleteView):
+    model = Post
+    # GET mostra blog/post_confirm_delete.html; POST apaga e redireciona.
+    success_url = reverse_lazy('blog:post-list')
