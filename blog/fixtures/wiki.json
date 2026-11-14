@@ -1,0 +1,261 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "!",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "leitor_cidade_z",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-11-14T13:00:31.330Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "password": "!",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "fa_do_genos",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-11-14T13:00:31.893Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+      "password": "!",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "mumen_fan",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2026-11-14T13:00:32.363Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "blog.category",
+    "pk": 3,
+    "fields": {
+      "name": "Associação de Heróis",
+      "description": "Como funciona a organização que registra e ranqueia os heróis."
+    }
+  },
+  {
+    "model": "blog.category",
+    "pk": 1,
+    "fields": {
+      "name": "Heróis",
+      "description": "Perfis dos heróis profissionais e de quem luta ao lado deles."
+    }
+  },
+  {
+    "model": "blog.category",
+    "pk": 4,
+    "fields": {
+      "name": "Temporada 1",
+      "description": "Personagens e acontecimentos da 1ª temporada do anime (2015, estúdio Madhouse)."
+    }
+  },
+  {
+    "model": "blog.category",
+    "pk": 5,
+    "fields": {
+      "name": "Temporada 2",
+      "description": "Personagens e acontecimentos da 2ª temporada do anime (2019, estúdio J.C.Staff)."
+    }
+  },
+  {
+    "model": "blog.category",
+    "pk": 2,
+    "fields": {
+      "name": "Vilões",
+      "description": "Monstros, alienígenas e humanos que ameaçam as cidades."
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 5,
+    "fields": {
+      "title": "Garou, o Caçador de Heróis",
+      "content": "<p><strong>Garou</strong> é o grande antagonista da 2ª temporada.</p>\n\n<h2>Quem é ele</h2>\n<p>Garou foi discípulo de <strong>Bang</strong> (Presa Prateada), herói da Classe S, no dojo da\narte marcial <em>Punho Fluente de Água que Esmaga Rochas</em>. Ele foi expulso depois de atacar e\nferir os outros alunos do dojo.</p>\n<p>Desde a infância, Garou se identifica com os monstros. Para ele, as histórias de heróis são\ninjustas, porque o vilão sempre perde.</p>\n\n<h2>O Caçador de Heróis</h2>\n<p>Garou decide se tornar um \"monstro\" e passa a caçar heróis profissionais, enfrentando cada vez\nmais adversários, até lutar com heróis da Classe S como Metal Bat. A cada combate ele aprende com\nos golpes dos inimigos e fica mais forte.</p>\n\n<blockquote>No Japão, Garou é dublado por Hikaru Midorikawa.</blockquote>",
+      "posted_at": "2026-11-11T22:00:00Z",
+      "categories": [
+        5,
+        2
+      ]
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 4,
+    "fields": {
+      "title": "Guia rápido: classes e níveis de ameaça da Associação de Heróis",
+      "content": "<p>A <strong>Associação de Heróis</strong> é a organização que registra, ranqueia e paga os\nheróis profissionais. Este guia resume as regras que aparecem no anime.</p>\n\n<h2>Classes de heróis</h2>\n<ul>\n  <li><strong>Classe S</strong>: o grupo de elite. Blast ocupa a 1ª posição, Tatsumaki\n      (o Tornado do Terror) a 2ª e Bang (Presa Prateada) a 3ª;</li>\n  <li><strong>Classe A</strong> e <strong>Classe B</strong>: heróis experientes, organizados\n      por posição dentro de cada classe;</li>\n  <li><strong>Classe C</strong>: a classe de entrada. Seus heróis precisam realizar pelo menos\n      uma boa ação por semana ou são removidos da associação. O 1º lugar da Classe C é o\n      Mumen Rider, o herói que anda de bicicleta.</li>\n</ul>\n\n<h2>Níveis de ameaça</h2>\n<p>Os desastres causados por monstros são classificados, do menos ao mais perigoso, em:</p>\n<ol>\n  <li><strong>Lobo</strong>;</li>\n  <li><strong>Tigre</strong>;</li>\n  <li><strong>Demônio</strong>;</li>\n  <li><strong>Dragão</strong>;</li>\n  <li><strong>Deus</strong>.</li>\n</ol>",
+      "posted_at": "2026-11-10T17:00:00Z",
+      "categories": [
+        3
+      ]
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 3,
+    "fields": {
+      "title": "Boros e a luta final da 1ª temporada",
+      "content": "<p><strong>Boros</strong> é o líder dos <strong>Ladrões da Matéria Escura</strong>, um grupo de\nconquistadores alienígenas que viaja pelo espaço em uma nave gigantesca.</p>\n\n<h2>Por que ele veio à Terra?</h2>\n<p>Boros é tão poderoso que nunca encontrou um adversário à altura. Uma vidente previu que ele\nencontraria esse oponente na Terra, e por isso sua nave chegou ao planeta e destruiu a\n<strong>Cidade A</strong>.</p>\n\n<h2>A luta contra Saitama</h2>\n<p>A batalha entre Boros e Saitama é o clímax da 1ª temporada. Boros libera a armadura que\nlimitava seu poder e usa ataques como o <em>Meteoric Burst</em> e o\n<em>Canhão Rugido da Estrela em Colapso</em>. Saitama responde com os Socos Consecutivos Normais\ne encerra a luta com o <strong>Soco Sério</strong>.</p>\n\n<p>É a primeira vez na série em que alguém aguenta mais de um golpe de Saitama, e por isso a luta\nvirou referência entre os fãs.</p>",
+      "posted_at": "2026-11-08T00:15:00Z",
+      "categories": [
+        4,
+        2
+      ]
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 2,
+    "fields": {
+      "title": "Genos, o discípulo ciborgue",
+      "content": "<p><strong>Genos</strong> é um ciborgue de 19 anos e o discípulo autodeclarado de Saitama.</p>\n\n<h2>Origem</h2>\n<p>Quando tinha 15 anos, sua cidade natal e sua família foram destruídas por um ciborgue\ndescontrolado. Genos sobreviveu e foi reconstruído como ciborgue pelo <strong>Dr. Kuseno</strong>.\nDesde então, procura o responsável para se vingar.</p>\n\n<h2>Encontro com Saitama</h2>\n<p>Genos conheceu Saitama ao ver o herói derrotar a Garota Mosquito com um único golpe.\nImpressionado, pediu para ser seu discípulo e acabou se mudando para o apartamento dele na Cidade Z.\nGenos anota tudo o que o mestre diz, e Saitama costuma pedir que ele resuma as explicações\nem <em>20 palavras ou menos</em>.</p>\n\n<h2>Na Associação de Heróis</h2>\n<p>Ao contrário do mestre, Genos foi aprovado com notas altas e entrou direto na\n<strong>Classe S</strong>, na 17ª posição.</p>\n\n<blockquote>No Japão, Genos é dublado por Kaito Ishikawa.</blockquote>",
+      "posted_at": "2026-11-04T23:00:00Z",
+      "categories": [
+        1,
+        4
+      ]
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 1,
+    "fields": {
+      "title": "Saitama: o herói que vence com um soco",
+      "content": "<p><strong>Saitama</strong> é o protagonista de <em>One-Punch Man</em>, obra criada por ONE.\nEle tem 25 anos, mora em um bairro abandonado da <strong>Cidade Z</strong> e se descreve como\nalguém que é <em>herói por hobby</em>.</p>\n\n<h2>O treino</h2>\n<p>Segundo o próprio Saitama, ele ficou forte com um treino de três anos, repetido todos os dias:</p>\n<ul>\n  <li>100 flexões;</li>\n  <li>100 abdominais;</li>\n  <li>100 agachamentos;</li>\n  <li>10 km de corrida.</li>\n</ul>\n<p>Durante o treino ele perdeu todo o cabelo. O resultado foi uma força tão grande que ele derrota\nquase qualquer inimigo com um único soco, o que o deixa entediado e sem a emoção de uma boa luta.</p>\n\n<h2>Na Associação de Heróis</h2>\n<p>Saitama se registrou na Associação de Heróis junto com Genos. Foi perfeito no teste físico,\nmas mal na prova escrita, e começou na <strong>Classe C</strong>. O nome de herói que recebeu\nfoi <strong>Careca de Capa</strong>.</p>\n\n<h2>Golpes conhecidos</h2>\n<ul>\n  <li><strong>Série Normal: Socos Consecutivos Normais</strong>, uma sequência rapidíssima de socos;</li>\n  <li><strong>Série Séria: Soco Sério</strong>, usado na luta contra Boros.</li>\n</ul>\n\n<blockquote>No Japão, Saitama é dublado por Makoto Furukawa.</blockquote>",
+      "posted_at": "2026-11-02T22:30:00Z",
+      "categories": [
+        1,
+        4,
+        5
+      ]
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 10,
+    "fields": {
+      "post": 5,
+      "author": 3,
+      "text": "A luta contra o Metal Bat foi a que me fez levar o Garou a sério.",
+      "posted_at": "2026-11-12T23:10:00Z"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 9,
+    "fields": {
+      "post": 5,
+      "author": 2,
+      "text": "Dá pra discordar do Garou e ainda assim entender o ponto dele. Por isso é um vilão tão bom.",
+      "posted_at": "2026-11-12T12:30:00Z"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 8,
+    "fields": {
+      "post": 3,
+      "author": 2,
+      "text": "O Soco Sério abrindo um buraco nas nuvens é uma das cenas mais icônicas do anime.",
+      "posted_at": "2026-11-09T19:20:00Z"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 7,
+    "fields": {
+      "post": 3,
+      "author": 4,
+      "text": "O mais triste é que o Boros queria só uma luta de verdade, que nem o Saitama.",
+      "posted_at": "2026-11-08T13:00:00Z"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 6,
+    "fields": {
+      "post": 3,
+      "author": 3,
+      "text": "A animação da Madhouse nessa luta é absurda. Revejo pelo menos uma vez por ano.",
+      "posted_at": "2026-11-08T01:30:00Z"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 5,
+    "fields": {
+      "post": 2,
+      "author": 2,
+      "text": "Ele explode (literalmente) em quase toda luta, mas nunca desiste. Por isso é um dos meus personagens favoritos.",
+      "posted_at": "2026-11-06T21:45:00Z"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 4,
+    "fields": {
+      "post": 2,
+      "author": 4,
+      "text": "O contraste entre o Genos discursando por minutos e o Saitama pedindo um resumo é genial.",
+      "posted_at": "2026-11-05T12:10:00Z"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 3,
+    "fields": {
+      "post": 1,
+      "author": 4,
+      "text": "Ele começar na Classe C por causa da prova escrita é uma das minhas partes favoritas da 1ª temporada.",
+      "posted_at": "2026-11-04T16:15:00Z"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 2,
+    "fields": {
+      "post": 1,
+      "author": 3,
+      "text": "Faltou dizer que ele vive correndo atrás de promoção no supermercado. Tem episódio em que isso importa mais pra ele do que o monstro!",
+      "posted_at": "2026-11-03T11:40:00Z"
+    }
+  },
+  {
+    "model": "blog.comment",
+    "pk": 1,
+    "fields": {
+      "post": 1,
+      "author": 2,
+      "text": "O melhor é que a \"rotina secreta\" é um treino que qualquer academia passaria. A piada da série inteira está aí.",
+      "posted_at": "2026-11-03T00:05:00Z"
+    }
+  }
+]

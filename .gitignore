@@ -6,3 +6,6 @@ __pycache__/
 # Ambiente virtual e arquivos gerados
 .venv/
 staticfiles/
+
+# Relatório da entrega (fica fora do repositório)
+relatorio/
