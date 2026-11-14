@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Post
+from .models import Comment, Post
 
 
 class PostForm(forms.ModelForm):
@@ -12,3 +12,15 @@ class PostForm(forms.ModelForm):
         help_texts = {
             'content': 'Aceita HTML: parágrafos, títulos, listas, links e imagens.',
         }
+
+
+class CommentForm(forms.ModelForm):
+    """Só o texto é preenchido pelo usuário; post e autor vêm da view."""
+
+    class Meta:
+        model = Comment
+        fields = ['text']
+        widgets = {
+            'text': forms.Textarea(attrs={'class': 'short'}),
+        }
+        labels = {'text': 'Seu comentário'}
