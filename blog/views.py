@@ -6,7 +6,7 @@ from django.views.generic import (
 )
 
 from .forms import CommentForm, PostForm
-from .models import Comment, Post
+from .models import Category, Comment, Post
 
 
 # ---------- Posts ----------
@@ -22,6 +22,7 @@ class PostDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['categories'] = self.object.categories.all()
         # Comentários do post, do mais recente para o mais antigo.
         context['comments'] = (
             self.object.comments.select_related('author').order_by('-posted_at')
@@ -70,3 +71,26 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
 
     def get_success_url(self):
         return self.post_obj.get_absolute_url() + '#comentarios'
+
+
+# ---------- Categorias ----------
+
+class CategoryListView(ListView):
+    model = Category
+    # template padrão: blog/category_list.html; variável: category_list
+
+
+class CategoryDetailView(DetailView):
+    """Página de uma categoria, com todos os seus posts.
+
+    Reaproveita o template de listagem de posts da parte 1.
+    DetailView responde com 404 se a categoria não existir.
+    """
+
+    model = Category
+    template_name = 'blog/post_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['post_list'] = self.object.posts.all()
+        return context

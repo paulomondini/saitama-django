@@ -8,7 +8,10 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ['title', 'content']
+        fields = ['title', 'content', 'categories']
+        widgets = {
+            'categories': forms.CheckboxSelectMultiple,
+        }
         help_texts = {
             'content': 'Aceita HTML: parágrafos, títulos, listas, links e imagens.',
         }

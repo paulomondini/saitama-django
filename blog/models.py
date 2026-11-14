@@ -4,6 +4,24 @@ from django.urls import reverse
 from django.utils import timezone
 
 
+class Category(models.Model):
+    """Categoria de artigos (por exemplo, Heróis ou Temporada 1)."""
+
+    name = models.CharField('nome', max_length=100, unique=True)
+    description = models.TextField('descrição')
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'categoria'
+        verbose_name_plural = 'categorias'
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('blog:category-detail', kwargs={'pk': self.pk})
+
+
 class Post(models.Model):
     """Um artigo da wiki/fórum (por exemplo, a página de um personagem)."""
 
@@ -11,6 +29,10 @@ class Post(models.Model):
     # O conteúdo é guardado como código HTML e exibido com o filtro |safe.
     content = models.TextField('conteúdo (HTML)')
     posted_at = models.DateTimeField('data de postagem', default=timezone.now)
+    # Um post pode estar em várias categorias, e uma categoria tem vários posts.
+    categories = models.ManyToManyField(
+        Category, related_name='posts', blank=True, verbose_name='categorias',
+    )
 
     class Meta:
         ordering = ['-posted_at']

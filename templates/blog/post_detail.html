@@ -7,6 +7,13 @@
   <article class="card article">
     <h1>{{ post.title }}</h1>
     <p class="meta">publicado em {{ post.posted_at|date:"d/m/Y, H:i" }}</p>
+    {% if categories %}
+      <ul class="tags" aria-label="Categorias">
+        {% for category in categories %}
+          <li><a href="{% url 'blog:category-detail' category.pk %}">{{ category.name }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
     {{ post.content|safe }}
   </article>
 

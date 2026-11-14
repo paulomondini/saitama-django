@@ -1,10 +1,23 @@
 {% extends 'base.html' %}
 
-{% block title %}Artigos{% endblock %}
+{% comment %}
+  Template usado em dois lugares:
+  - listagem geral de posts (PostListView);
+  - página individual de categoria (CategoryDetailView), quando existe a
+    variável "category".
+{% endcomment %}
+
+{% block title %}{% if category %}{{ category.name }}{% else %}Artigos{% endif %}{% endblock %}
 
 {% block content %}
-  <h1>Artigos e discussões</h1>
-  <p class="meta">Tudo o que os fãs já escreveram sobre heróis, monstros e o mundo de One-Punch Man.</p>
+  {% if category %}
+    <p class="meta"><a href="{% url 'blog:category-list' %}">← todas as categorias</a></p>
+    <h1>Categoria: {{ category.name }}</h1>
+    <p class="meta">{{ category.description }}</p>
+  {% else %}
+    <h1>Artigos e discussões</h1>
+    <p class="meta">Tudo o que os fãs já escreveram sobre heróis, monstros e o mundo de One-Punch Man.</p>
+  {% endif %}
 
   {% if post_list %}
     <ul class="topics">
